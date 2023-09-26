@@ -1,19 +1,28 @@
 @use '../base/theme';
 
-.btn{
-  display: inline-block;
+.btn {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
 
-  padding: .375rem .75rem;
+  background: linear-gradient(145deg, #ffffff, #e3e3e3);
+  box-shadow: 4px 4px 10px #aaaaaa,
+  inset -2px -2px 4px #d1d1d1,
+  inset 2px 2px 4px rgba(209, 209, 209, 0.20);
 
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
+  /* Text styling */
+  color: #333333;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 
-  border: 5px solid purple;
-  border-radius: .25rem;
-
-  color: #212529;
-  &:hover{
-    cursor: pointer;
+@each $name,$color in theme.$theme-colors {
+  .btn-#{$name}{
+    background: linear-gradient(145deg, #ffffff, $color);
+    color: white;
   }
 }
