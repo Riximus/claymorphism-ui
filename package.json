@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "description": "Claymorphism CSS Framework",
   "files": [
-    "dist/bundle.css"
+    "dist/final.css"
   ],
   "scripts": {
     "serve": "npx serve",
-    "sass-build": "sass src/sass/main.scss:dist/bundle.css --style=compressed",
-    "sass-watch": "sass --watch src/sass/main.scss:dist/bundle.css --style=compressed",
+    "watch:sass": "sass --no-source-map --watch src/sass/main.scss:build/styles.css",
+    "compile:sass": "sass --no-source-map src/sass/main.scss:build/styles.css",
+    "bundle:css": "lightningcss --browserslist --minify --bundle build/styles.css --output-file dist/bundle.css",
+    "build": "npm run compile:sass && npm run bundle:css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Riximus",
   "license": "ISC",
   "devDependencies": {
+    "lightningcss-cli": "^1.22.0",
     "sass": "^1.68.0"
   },
   "type": "module"
