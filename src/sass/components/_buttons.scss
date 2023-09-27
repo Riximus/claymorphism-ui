@@ -6,7 +6,7 @@
   border-radius: 8px;
 
   background: linear-gradient(145deg, #ffffff, #e3e3e3);
-  box-shadow: 4px 4px 10px #aaaaaa,
+  box-shadow: 3px 3px 10px #aaaaaa,
   inset -2px -2px 4px #d1d1d1,
   inset 2px 2px 4px rgba(209, 209, 209, 0.20);
 
@@ -22,7 +22,14 @@
 
 @each $name,$color in theme.$theme-colors {
   .btn-#{$name}{
-    background: linear-gradient(145deg, #ffffff, $color);
-    color: white;
+    $gradient-corner: lighten($color, 15%);
+    $outer-shadow: transparentize(darken($color, 15%), 0.3);
+    $inner-shadow: darken($color, 10%);
+    $inner-light: transparentize($inner-shadow, 0.8);
+
+    background: linear-gradient(145deg, $gradient-corner, $color);
+    box-shadow: 3px 3px 10px $outer-shadow,
+    inset -2px -2px 4px $inner-shadow,
+    inset 2px 2px 4px $inner-light;
   }
 }
